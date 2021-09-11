@@ -2,7 +2,6 @@ import java.util.*;
 class Solution
 {
     //Function to return the maximum sum of non-adjacent nodes.
-    int id = 0;
     static int getMaxSum(Node root)
     {
         Pair pair = getSum(root);
@@ -18,7 +17,11 @@ class Solution
             //include this node, don't include the children
             sum.yes = root.data + left.no + right.no;
             
-            //dont include this node, but include thier children
+            //don't inlude this node, either of the following
+        //1) include left child and don't include right child
+        //2) don't include left child and include right child
+        //3) include both children
+        //4) don't include any child
             sum.no = Math.max(left.no, left.yes) + Math.max(right.no, right.yes);
             return sum;
     }
@@ -35,7 +38,6 @@ class Solution
 class Solution
 {
     //Function to return the maximum sum of non-adjacent nodes.
-    int id = 0;
     static int getMaxSum(Node root)
     {
         return getSum(root,true);
